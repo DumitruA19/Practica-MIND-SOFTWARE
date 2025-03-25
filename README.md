@@ -47,5 +47,12 @@ Includes:
 ### `oracle_views.sql`
 Includes:
 - Views for top salaries, recent hires, department averages, full employee info
-
+  
+### `oracle_additional_exercises.sql`
+Includes advanced practice:
+- Sequence generation for employees
+- Real-world table modeling (`products`, `orders`)
+- Data population using `LOOP`
+- Complex queries using `CASE`, `PARTITION BY`, `RANK()`, `DECODE`
+- Subqueries with analytic functions
 

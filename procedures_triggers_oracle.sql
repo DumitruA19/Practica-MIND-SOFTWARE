@@ -1,5 +1,5 @@
 
--- PROCEDURE 1: Insert new employee with validation
+--PROCEDURE 1: Insert new employee with validation
 CREATE OR REPLACE PROCEDURE add_employee (
     p_name IN VARCHAR2,
     p_salary IN NUMBER,

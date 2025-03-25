@@ -14,7 +14,7 @@ BEGIN
     INSERT INTO employees (employee_id, name, salary, department_id, job_id, hire_date)
     VALUES (employees_seq.NEXTVAL, p_name, p_salary, p_dept, p_job, SYSDATE);
 END;
-/
+
 
 -- PROCEDURE 2: Update salary of an employee by percentage
 CREATE OR REPLACE PROCEDURE update_salary (
@@ -26,7 +26,7 @@ BEGIN
     SET salary = salary + (salary * p_percent / 100)
     WHERE employee_id = p_emp_id;
 END;
-/
+
 
 -- PROCEDURE 3: Delete employee by ID
 CREATE OR REPLACE PROCEDURE delete_employee (
@@ -36,7 +36,7 @@ BEGIN
     DELETE FROM employees
     WHERE employee_id = p_emp_id;
 END;
-/
+
 
 -- PROCEDURE 4: Get employee info by ID
 CREATE OR REPLACE PROCEDURE get_employee_info (
@@ -54,7 +54,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Salary: ' || v_salary);
     DBMS_OUTPUT.PUT_LINE('Hire Date: ' || v_hire_date);
 END;
-/
+
 
 -- TRIGGER 1: Prevent salary below 3000
 CREATE OR REPLACE TRIGGER trg_check_salary
@@ -65,7 +65,7 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20002, 'Salary must be at least 3000.');
     END IF;
 END;
-/
+
 
 -- TRIGGER 2: Log insert into employees
 CREATE OR REPLACE TRIGGER trg_log_insert
@@ -74,7 +74,7 @@ FOR EACH ROW
 BEGIN
     DBMS_OUTPUT.PUT_LINE('New employee inserted: ' || :NEW.name);
 END;
-/
+
 
 -- TRIGGER 3: Auto-set hire_date if NULL
 CREATE OR REPLACE TRIGGER trg_set_hire_date
@@ -85,7 +85,7 @@ BEGIN
         :NEW.hire_date := SYSDATE;
     END IF;
 END;
-/
+
 
 -- TRIGGER 4: Prevent deletion from HR department
 CREATE OR REPLACE TRIGGER trg_protect_hr
@@ -102,4 +102,4 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20003, 'Cannot delete employees from HR department.');
     END IF;
 END;
-/
+
